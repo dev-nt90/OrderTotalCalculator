@@ -5,9 +5,11 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTotalCalculator.Api", "OrderTotalCalculator.Api\OrderTotalCalculator.Api.csproj", "{A6A546C3-C486-4537-A3A8-89C078690A8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTotalCalculator.Application", "OrderTotalCalculator.Application\OrderTotalCalculator.Application.csproj", "{110100DA-C9FB-4D60-8CC1-B1E4C9A629CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderTotalCalculator.Application", "OrderTotalCalculator.Application\OrderTotalCalculator.Application.csproj", "{110100DA-C9FB-4D60-8CC1-B1E4C9A629CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTotalCalculator.Contracts", "OrderTotalCalculator.Contracts\OrderTotalCalculator.Contracts.csproj", "{5FE2FBC2-D1A7-44F9-8EE8-28EB10DFF644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderTotalCalculator.Contracts", "OrderTotalCalculator.Contracts\OrderTotalCalculator.Contracts.csproj", "{5FE2FBC2-D1A7-44F9-8EE8-28EB10DFF644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTotalCalculator.Tests", "OrderTotalCalculator.Tests\OrderTotalCalculator.Tests.csproj", "{E5D30E97-648D-4D66-AEBF-A8F5A412FB39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5FE2FBC2-D1A7-44F9-8EE8-28EB10DFF644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FE2FBC2-D1A7-44F9-8EE8-28EB10DFF644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FE2FBC2-D1A7-44F9-8EE8-28EB10DFF644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D30E97-648D-4D66-AEBF-A8F5A412FB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D30E97-648D-4D66-AEBF-A8F5A412FB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D30E97-648D-4D66-AEBF-A8F5A412FB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D30E97-648D-4D66-AEBF-A8F5A412FB39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
