@@ -21,14 +21,13 @@ namespace SalesTaxCalculatorApi
 			{
 				app.UseSwagger();
 				app.UseSwaggerUI();
-				app.UseMiddleware<RouteDiagnosticsMiddleware>();
 			}
 
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();
 
-			app.UseMiddleware<ValidationMappingMiddleware>();
+			app.UseMiddleware<ValidationExceptionMappingMiddleware>();
 
 			app.MapControllers();
 

@@ -5,15 +5,15 @@ namespace OrderTotalCalculator.Api.Middleware
 	/// <summary>
 	/// Middleware for handling FluentValidation.ValidationException and converting validation errors to a standardized JSON response.
 	/// </summary>
-	public class ValidationMappingMiddleware
+	public class ValidationExceptionMappingMiddleware
 	{
 		private readonly RequestDelegate next;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ValidationMappingMiddleware"/> class.
+		/// Initializes a new instance of the <see cref="ValidationExceptionMappingMiddleware"/> class.
 		/// </summary>
 		/// <param name="next">The next middleware delegate in the request pipeline.</param>
-		public ValidationMappingMiddleware(RequestDelegate next)
+		public ValidationExceptionMappingMiddleware(RequestDelegate next)
 		{
 			this.next = next;
 		}
