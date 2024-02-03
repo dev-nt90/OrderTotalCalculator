@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SalesTaxCalculator.Contracts\OrderTotalCalculator.Contracts.csproj" />
+    <ProjectReference Include="..\OrderTotalCalculator.Contracts\OrderTotalCalculator.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

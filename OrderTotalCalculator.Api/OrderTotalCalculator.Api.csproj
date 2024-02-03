@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SalesTaxCalculator.Application\OrderTotalCalculator.Application.csproj" />
-    <ProjectReference Include="..\..\SalesTaxCalculator.Contracts\OrderTotalCalculator.Contracts.csproj" />
+    <ProjectReference Include="..\OrderTotalCalculator.Application\OrderTotalCalculator.Application.csproj" />
+    <ProjectReference Include="..\OrderTotalCalculator.Contracts\OrderTotalCalculator.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
