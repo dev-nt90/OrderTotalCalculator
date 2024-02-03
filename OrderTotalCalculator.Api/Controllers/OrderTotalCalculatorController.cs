@@ -13,7 +13,6 @@ namespace OrderTotalCalculator.Api.Controllers
 	/// ENHANCEMENT: auth
 	/// ENHANCEMENT: route constants
 	/// ENHANCEMENT: publish to queue instead of letting controller contact service directly
-	/// ENHANCEMENT: request/response logging
 	/// </remarks>
 	[Route("api/[controller]")]
 	[ApiController]
@@ -42,10 +41,10 @@ namespace OrderTotalCalculator.Api.Controllers
 		/// </returns>
 		[HttpPost]
 		public async Task<IActionResult> CalculateOrderTotal(
-			[FromBody]CalculateOrderTotalRequest request,
+			[FromBody] CalculateOrderTotalRequest request,
 			CancellationToken cancellationToken)
 		{
-			if(request == null)
+			if (request == null)
 			{
 				return BadRequest("Request body cannot be empty");
 			}
@@ -53,9 +52,8 @@ namespace OrderTotalCalculator.Api.Controllers
 			var order = request.MapToOrder();
 			var result = await this.orderTotalCalculatorService.CalculateOrderTotalAsync(order, cancellationToken);
 
-			if(result is null)
+			if (result is null)
 			{
-				// TODO: try log this as error on server side
 				return StatusCode(500, "Internal server error");
 			}
 

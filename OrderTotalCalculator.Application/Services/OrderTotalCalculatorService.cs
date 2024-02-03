@@ -17,8 +17,8 @@ namespace OrderTotalCalculator.Application.Services
 		/// Initializes a new instance of the <see cref="OrderTotalCalculatorService"/> class.
 		/// </summary>
 		/// <param name="orderValidator">The validator used for validating orders within the service.</param>
-		public OrderTotalCalculatorService(IValidator<Order> orderValidator, IStateSalesTaxRepository stateSalesTaxRepository) 
-		{ 
+		public OrderTotalCalculatorService(IValidator<Order> orderValidator, IStateSalesTaxRepository stateSalesTaxRepository)
+		{
 			this.orderValidator = orderValidator;
 			this.stateSalesTaxRepository = stateSalesTaxRepository;
 		}
@@ -42,15 +42,19 @@ namespace OrderTotalCalculator.Application.Services
 		{
 			await this.orderValidator.ValidateAndThrowAsync(order, cancellationToken);
 
-			var totalDiscountAmount = order.OrderSubtotal * order.PercentDiscount; // TODO: need to test where the decimal will be (e.g. 60 vs .6)
-			var orderSubTotalWithDiscount = order.OrderSubtotal - (order.OrderSubtotal * order.PercentDiscount);
-			var totalSalesTax = orderSubTotalWithDiscount * this.stateSalesTaxRepository.GetSalesTaxRate(order.State);
+			var roundedDiscountAmount = Decimal.Round(
+				order.OrderSubtotal * order.PercentDiscount,
+				2,
+				MidpointRounding.AwayFromZero);
+
+			var orderSubTotalWithDiscount = order.OrderSubtotal - roundedDiscountAmount;
+			var totalSalesTax = Decimal.Round(orderSubTotalWithDiscount * this.stateSalesTaxRepository.GetSalesTaxRate(order.State), 2, MidpointRounding.AwayFromZero);
 			var orderTotal = orderSubTotalWithDiscount + totalSalesTax;
 
-			order.OrderTotal = (float)Math.Round(orderTotal, 2);
-			order.TotalSalesTax = (float)Math.Round(totalSalesTax, 2);
-			order.DiscountedOrderTotalMinusSalesTax = (float)Math.Round(orderSubTotalWithDiscount, 2);
-			order.TotalDiscountAmount = (float)Math.Round(totalDiscountAmount, 2);
+			order.OrderTotal = orderTotal;
+			order.TotalSalesTax = totalSalesTax;
+			order.DiscountedOrderTotalMinusSalesTax = orderSubTotalWithDiscount;
+			order.TotalDiscountAmount = roundedDiscountAmount;
 
 			return order;
 		}

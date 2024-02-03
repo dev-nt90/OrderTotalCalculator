@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrderTotalCalculator.Application.Repositories
+﻿namespace OrderTotalCalculator.Application.Repositories
 {
 	public interface IStateSalesTaxRepository
 	{
-		
-		public float GetSalesTaxRate(string stateCode);
+		/// <summary>
+		/// Gets the sales tax rate for a specific state.
+		/// </summary>
+		/// <param name="stateCode">The state code for which to retrieve the sales tax rate.</param>
+		/// <returns>The sales tax rate for the specified state.</returns>
+		public decimal GetSalesTaxRate(string stateCode);
 
 		/// <summary>
 		/// Returns a collection of state codes representing the set of states with supported sales tax calculations

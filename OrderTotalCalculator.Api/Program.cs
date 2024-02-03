@@ -1,5 +1,6 @@
 using OrderTotalCalculator.Api.Middleware;
 using OrderTotalCalculator.Application;
+using Serilog;
 
 namespace SalesTaxCalculatorApi
 {
@@ -11,6 +12,15 @@ namespace SalesTaxCalculatorApi
 			builder.Services.AddControllers();
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
+
+			builder.Services.AddLogging(logBuilder =>
+			{
+				Log.Logger = new LoggerConfiguration()
+					.WriteTo.File("Logs/OrderTotalCalculatorApi.log", rollingInterval: RollingInterval.Day)
+					.CreateLogger();
+
+				logBuilder.AddSerilog();
+			});
 
 			builder.Services.AddApplication();
 

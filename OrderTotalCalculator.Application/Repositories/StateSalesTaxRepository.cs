@@ -3,17 +3,25 @@
 	public class StateSalesTaxRepository : IStateSalesTaxRepository
 	{
 		// ENHANCEMENT: we could potentially extend this to a database, allowing us to adjust supported states and their sales taxes dynamically
-		private readonly IDictionary<string, float> statesSalesTaxMap = new Dictionary<string, float>()
+		private readonly IDictionary<string, decimal> statesSalesTaxMap = new Dictionary<string, decimal>()
 		{
-			{ "GA", 0.06f },
-			{ "CA", 0.075f },
-			{ "NY", 0.0675f },
-			{ "VT", 0.00f }
+			{ "GA", 0.06m },
+			{ "CA", 0.075m },
+			{ "NY", 0.0675m },
+			{ "VT", 0.00m }
 		};
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="StateSalesTaxRepository"/> class.
+		/// </summary>
 		public StateSalesTaxRepository() { }
 
-		public float GetSalesTaxRate(string stateCode)
+		/// <summary>
+		/// Gets the sales tax rate for a specific state.
+		/// </summary>
+		/// <param name="stateCode">The state code for which to retrieve the sales tax rate.</param>
+		/// <returns>The sales tax rate for the specified state.</returns>
+		public decimal GetSalesTaxRate(string stateCode)
 		{
 			return statesSalesTaxMap[stateCode];
 		}

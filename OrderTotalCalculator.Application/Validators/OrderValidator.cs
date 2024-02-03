@@ -16,16 +16,15 @@ namespace OrderTotalCalculator.Application.Validators
 		/// </summary>
 		/// <param name="orderTotalCalculatorService">The service used for order total calculations.</param>
 		public OrderValidator(IStateSalesTaxRepository stateSalesTaxRepository)
-		{ 
+		{
 			this.stateSalesTaxRepository = stateSalesTaxRepository;
 
 			// validate we are applying sales tax from a supported state
 			RuleFor(x => x.State).Must(ValidateStateIsSupported).WithMessage("Unknown State");
-			RuleFor(x => x.OrderSubtotal).GreaterThan(0.00f).WithMessage("Order Total Below or Equal To Zero");
-			
+			RuleFor(x => x.OrderSubtotal).GreaterThan(0.00m).WithMessage("Order Total Below or Equal To Zero");
+
 			// TODO: free allowed?
-			// TODO: discount repped as range from 0 to 1 or 0 to 100?
-			RuleFor(x => x.PercentDiscount).LessThanOrEqualTo(1.00f); 
+			RuleFor(x => x.PercentDiscount).LessThanOrEqualTo(1.00m);
 		}
 
 		/// <summary>
@@ -38,9 +37,9 @@ namespace OrderTotalCalculator.Application.Validators
 		private bool ValidateStateIsSupported(string stateCode)
 		{
 			// while we _could_ jam these ops together into one condition, I think it would be messy to debug
-			if(string.IsNullOrWhiteSpace(stateCode)) 
-			{  
-				return false; 
+			if (string.IsNullOrWhiteSpace(stateCode))
+			{
+				return false;
 			}
 
 			// ENHANCEMENT: make async to scale

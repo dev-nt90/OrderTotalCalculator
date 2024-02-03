@@ -29,7 +29,7 @@ namespace OrderTotalCalculator.Api.Middleware
 			{
 				await next(context);
 			}
-			catch(FluentValidation.ValidationException v)
+			catch (FluentValidation.ValidationException v)
 			{
 				context.Response.StatusCode = 400;
 				var validationFailureResponse = new ValidationFailureResponse
